@@ -7,16 +7,16 @@ jobs:
     name: First Job
     runs-on:  ubuntu-latest
     steps: 
-      -name: step1
-       uses: actions/checkout@v2
-      -name: step2
-       run: env | sort
+      - name: step1
+        uses: actions/checkout@v2
+      - name: step2
+        run: env | sort
 
   job2:
     name: Second Job
     runs-on: windows-latest
     steps: 
-      -name: step1
-       uses: actions/checkout@v2
-      -name: step2
-       run: "Get-ChildItem Env: | Sort-Object Name"
+      - name: step1
+        uses: actions/checkout@v2
+      - name: step2
+        run: "Get-ChildItem Env: | Sort-Object Name"
