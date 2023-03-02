@@ -38,6 +38,8 @@ jobs:
       
       - name: Fetch issues
         uses: octokit/request-action@v2.x
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN_SECRET }}
         id: issues
         with:
           route: GET /repos/:owner/:repo/issues
