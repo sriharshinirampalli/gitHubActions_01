@@ -39,11 +39,11 @@ jobs:
       - name: Fetch issues
         uses: octokit/request-action@v2.x
         env:
-          GITHUB_TOKEN: ${{ secrets.sample }}
+          GITHUB_TOKEN: ${{ secrets.SAMPLE_TOKEN }}
         id: issues
         with:
           route: GET /repos/:owner/:repo/issues
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
           headers: '{"Accept":"application/vnd.github.symmetra-preview+json"}'
-          repo-token: ${{ secrets.sample  }}
+          repo-token: ${{ secrets.SAMPLE_TOKEN  }}
