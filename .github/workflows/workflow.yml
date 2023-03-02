@@ -57,7 +57,5 @@ jobs:
           
       - name: Print headers
         run: |
-          echo "Headers:"
-          echo "${{ steps.issues.outputs.data | fromJson | map('SelectMany', .headers) | unique | join('\n') }}"
-          echo "Values:"
-          echo "${{ steps.issues.outputs.data | fromJson | map('SelectMany', .headers) | unique | map(.value) | join('\n') }}"
+         echo "${{ steps.issues.outputs.data }}"
+          
