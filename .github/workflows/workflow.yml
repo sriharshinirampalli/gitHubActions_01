@@ -50,8 +50,8 @@ jobs:
           repo: ${{ github.event.repository.name }}
           headers: |
                     '{"Accept":"application/vnd.github.symmetra-preview+json",
-                    "X-Application": "<your_application_name>",
-                     "X-Requester-Email-Id": "<your_emailid>"
+                    "X-application": "application",
+                     "X-requester_email_id": "sample"
                       }'
           repo-token: ${{ secrets.GITHUB_TOKEN  }}
           
