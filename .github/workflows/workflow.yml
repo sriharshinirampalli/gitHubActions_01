@@ -36,7 +36,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
       - name: My action
-        with:
+        env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_SECRET }}
       - name: Fetch issues
         uses: octokit/request-action@v2.x
