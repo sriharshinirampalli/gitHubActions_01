@@ -35,10 +35,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: My action
-        uses: actions/labeler@v4
-        with:
-          GITHUB_TOKEN: ${{ secrets.TOKEN_SECRET }}
+      
       - name: Fetch issues
         uses: octokit/request-action@v2.x
         id: issues
@@ -47,4 +44,4 @@ jobs:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
           headers: '{"Accept":"application/vnd.github.symmetra-preview+json"}'
-          repo-token: ${{ GITHUB_TOKEN }}
+          repo-token: ${{ secrets.TOKEN_SECRET }}
