@@ -25,6 +25,9 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      - uses: actions/labeler@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
@@ -39,11 +42,11 @@ jobs:
       - name: Fetch issues
         uses: octokit/request-action@v2.x
         env:
-          GITHUB_TOKEN: ${{ secrets.SAMPLE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         id: issues
         with:
           route: GET /repos/:owner/:repo/issues
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
           headers: '{"Accept":"application/vnd.github.symmetra-preview+json"}'
-          repo-token: ${{ secrets.SAMPLE_TOKEN  }}
+          repo-token: ${{ secrets.GITHUB_TOKEN  }}
