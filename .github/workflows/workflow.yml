@@ -43,9 +43,3 @@ jobs:
           repo: ${{ github.event.repository.name }}
           headers: '{"Accept":"application/vnd.github.symmetra-preview+json"}'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Print headers
-        run: |
-          echo "Headers:"
-          echo "${{ steps.issues.outputs.data | fromJson | map('SelectMany', .headers) | unique | join('\n') }}"
-          echo "Values:"
-          echo "${{ steps.issues.outputs.data | fromJson | map('SelectMany', .headers) | unique | map(.value) | join('\n') }}"
