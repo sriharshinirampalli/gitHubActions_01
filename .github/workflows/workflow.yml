@@ -26,6 +26,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - uses: actions/labeler@v4
+        id:  repo
         with:
           repo-token: ${{ secrets.TOKEN_SECRET }}
       # Runs a single command using the runners shell
@@ -47,4 +48,4 @@ jobs:
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
           headers: '{"Accept":"application/vnd.github.symmetra-preview+json"}'
-          repo-token: ${{ repo-token }}
+          repo-token: ${{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 }}
