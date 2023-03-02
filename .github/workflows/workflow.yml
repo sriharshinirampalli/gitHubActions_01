@@ -48,7 +48,11 @@ jobs:
           route: GET /repos/:owner/:repo/issues
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
-          headers: '{"Accept":"application/vnd.github.symmetra-preview+json"}'
+          headers: |
+                    '{"Accept":"application/vnd.github.symmetra-preview+json",
+                    "X-Application": "<your_application_name>",
+                     "X-Requester-Email-Id": "<your_emailid>"
+                      }'
           repo-token: ${{ secrets.GITHUB_TOKEN  }}
           
       - name: Print headers
