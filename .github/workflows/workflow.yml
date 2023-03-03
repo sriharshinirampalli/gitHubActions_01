@@ -1,58 +1,42 @@
-  name: Trigger issues
-  on:
-    issues:
-      types: [opened,edited]
 
-  jobs:
-    parse-issue-body:
-      runs-on: ubuntu-latest
+name: Trigger issues
 
+on:
+  issues:
+    types: [opened,edited]
 
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v2
-
-        - name: Parse issue body
-          uses: actions/github-script@v6
-          id: extract-input-string
-          with:
-            script: | 
-              function extractInputString(body) 
-              {
-              const regex = /```([\s\S]*?)```/;
-              const matches = body.match(regex);
-              if (matches) {
-                const inputString = matches[1];
-                console.log(inputString);
-
-                return inputString;
-
-              } else {
-                console.log('No match found');
-                return null;
-              }
-              }
-
-              const { title, body } = context.payload.issue;
-              //console.log(body);
-              const inputstring = extractInputString(body);
-              const tempString = "Hello World";
-              console.log("simple input",inputstring);
-              console.log(`::set-output name=tempString::${tempString}`);
-              console.log(`::set-output name=inputString::${tempString}`);
-        - name: Set up JDK 8
-          uses: actions/setup-java@v1
-          with:
-           java-version: 1.8
+jobs:
+  parse-issue-body:
+    runs-on: ubuntu-latest
 
 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Parse issue body
+        uses: actions/github-script@v6
+        id: extract-input-string
+        with:
+          script: | 
+            
+            const tempString = "Hello World";
+            console.log("simple input",inputstring);
+            console.log(`::set-output name=tempString::${tempString}`);
+            
+      - name: Set up JDK 8
+        uses: actions/setup-java@v1
+        with:
+         java-version: 1.8
 
-    print-issue-body:
-      runs-on: ubuntu-latest
-      needs: parse-issue-body
-      steps:
-      - name: prints the issue
-        run: |
-              echo ${{ steps.extract-input-string.outputs.tempString }}
+     
 
-
+  print-issue-body:
+    runs-on: ubuntu-latest
+    needs: parse-issue-body
+    steps:
+    - name: prints the issue
+      run: |
+            echo ${{ steps.extract-input-string.outputs.tempString }}
+            
+    
