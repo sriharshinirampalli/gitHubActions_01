@@ -21,7 +21,6 @@ jobs:
           script: | 
             
             const tempString = "Hello World";
-            console.log("simple input",inputstring);
             console.log(`::set-output name=tempString::${tempString}`);
             
       - name: Set up JDK 8
