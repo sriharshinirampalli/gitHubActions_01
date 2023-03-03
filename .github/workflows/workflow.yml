@@ -36,6 +36,7 @@ jobs:
     needs: parse-issue-body
     steps:
     - name: Verify tempString variable
-      run: echo ${{ steps.extract-input-string.outputs.tempString }}
+      run: |
+          echo ${{ steps.extract-input-string.outputs.tempString }}
 
     
