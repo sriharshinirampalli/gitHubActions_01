@@ -34,8 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: parse-issue-body
     steps:
-    - name: prints the issue
-      run: |
-          echo '${{ toJson(needs.parse-issue-body.outputs.tempString ) }}'
-            
+    - name: Verify tempString variable
+      run: echo ${{ steps.extract-input-string.outputs.tempString }}
+
     
