@@ -36,6 +36,6 @@ jobs:
     steps:
     - name: prints the issue
       run: |
-          echo ${{ toJson(needs.parse-issue-body.outputs.tempString ) }}
+          echo '${{ toJson(needs.parse-issue-body.outputs.tempString ) }}'
             
     
